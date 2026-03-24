@@ -115,7 +115,7 @@ from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['MAX_CONTENT_LENGTH'] = 500 * 1024 * 1024  
 
 BASE_FOLDER = "static/recordings"
@@ -170,4 +170,4 @@ def handle_video_save(data, filename):
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    app.run(debug=True)
