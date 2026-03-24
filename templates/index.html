@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eye Tracker Calibration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
+<div class="bg-animation"></div>
+<div class="particles"></div>
+
+<div class="top-banner" id="banner">
+    <img src="{{ url_for('static', filename='images/banner_gradio.png') }}" alt="Banner">
+</div>
+
+<div class="eye-container">
+    <div class="eye"><div class="pupil"></div></div>
+</div>
+
+<div id="formContainer">
+    <h2>👁 Start Calibration</h2>
+    
+    <div id="setupArea" style="margin-bottom: 15px; background: #f0f0f0; padding: 10px; border-radius: 10px;">
+        <video id="preview" autoplay muted playsinline style="width: 100%; height: 120px; background: #000; border-radius: 8px; object-fit: cover; display: none;"></video>
+        <div id="statusText" style="font-size: 12px; margin: 5px 0; color: #666;">Step 1: Allow Camera Access</div>
+        <button type="button" id="permBtn" onclick="requestPermissionsManual()" style="background: #333; font-size: 12px; padding: 8px;">Allow Camera</button>
+    </div>
+
+    <input id="name" type="text" placeholder="Enter Name">
+    <input id="age" type="number" placeholder="Enter Age">
+    <input id="location" type="text" placeholder="Enter Location">
+
+    <button id="startBtn" onclick="start()" style="opacity: 0.5;" disabled>Start Calibration</button>
+</div>
+
+<div id="screen"></div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

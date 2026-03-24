@@ -1,0 +1,157 @@
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+/* ================= HOME BACKGROUND ================= */
+.bg-animation {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #eef3f8, #f8fbff);
+    z-index: -2;
+}
+
+.particles::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: moveParticles 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveParticles {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100px); }
+}
+
+/* ================= TOP IMAGE ================= */
+.top-banner {
+    text-align: center;
+    margin-top: 10px;
+}
+.top-banner img {
+    max-width: 95%;
+    border-radius: 12px;
+}
+
+/* ================= EYE ANIMATION ================= */
+.eye-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+.eye {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #ccc;
+    position: relative;
+}
+.pupil {
+    width: 25px;
+    height: 25px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    animation: eyeMove 4s infinite;
+}
+@keyframes eyeMove {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(8px,5px); }
+    50% { transform: translate(-8px,5px); }
+    75% { transform: translate(5px,-8px); }
+    100% { transform: translate(0,0); }
+}
+
+/* ================= FORM UI ================= */
+#formContainer {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(45deg, #7b2ff7, #f107a3);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* ================= CALIBRATION MODE (BLACK BG) ================= */
+#screen {
+    display: none;
+}
+
+body.calibration-active #screen {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000; /* ✅ COMPLETE BLACK BACKGROUND */
+    z-index: 9999;
+}
+
+body.calibration-active #formContainer,
+body.calibration-active .top-banner,
+body.calibration-active .eye-container,
+body.calibration-active .bg-animation,
+body.calibration-active .particles {
+    display: none;
+}
+
+/* ================= BRIGHT NEON POINT (SMALL TO BIG) ================= */
+.point {
+    width: 20px;
+    height: 20px;
+    background: #ff0000;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    /* Super Bright Glow */
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000;
+    animation: pulseNeon 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseNeon {
+    0% { 
+        transform: translate(-50%, -50%) scale(0.5); 
+        opacity: 0.7; 
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.8); 
+        opacity: 1;
+        box-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000, 0 0 90px #ff0000;
+    }
+}
